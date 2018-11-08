@@ -130,12 +130,12 @@
       </div>
     </ons-toolbar>
 
-    <ons-tabbar swipeable position="auto">
+    <ons-tabbar swipeable position="auto" id="tabbar">
       <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="new" active>
       </ons-tab>
-      <ons-tab page="tab3.html" label="Catalog" icon="fa-heart" active-icon="fa-heart">
+      <ons-tab page="tab2.html" label="Catalog" icon="fa-heart" active-icon="fa-heart">
       </ons-tab>
-      <ons-tab page="tab2.html" label="Cart" icon="fa-shopping-cart" active-icon="fa-shopping-cart">
+      <ons-tab page="tab3.html" label="Cart" icon="fa-shopping-cart" active-icon="fa-shopping-cart">
       </ons-tab>
       
     </ons-tabbar>
@@ -145,15 +145,15 @@
     <ons-page id="Tab1">
       <p style="text-align: center; margin-top: 10px;">
         <!-- <ons-search-input id="search" placeholder="Search" onchange="scanQR()"></ons-search-input> -->
-        <ons-search-input id="search" placeholder="Search" onchange="scanQR()"></ons-search-input>
-        
+        <ons-search-input id="search" placeholder="Search" onchange="search(this.value)"></ons-search-input>
+        <!-- onchange="scanQR()" -->
       </p>
       <ons-carousel swipeable auto-scroll overscrollable id="carousel" style="height: 300px;">
-        <ons-carousel-item id="carousel1" style="background: url('images/1.jpg') no-repeat center; background-size: contain;">
+        <ons-carousel-item id="carousel1" style="background: url('') no-repeat center; background-size: contain;">
         </ons-carousel-item>
-        <ons-carousel-item id="carousel2" style="background: url('images/2.jpg') no-repeat center; background-size: contain;">
+        <ons-carousel-item id="carousel2" style="background: url('') no-repeat center; background-size: contain;">
         </ons-carousel-item>
-        <ons-carousel-item id="carousel3" style="background: url('images/3.jpg') no-repeat center; background-size: contain;">
+        <ons-carousel-item id="carousel3" style="background: url('') no-repeat center; background-size: contain;">
         </ons-carousel-item>
       </ons-carousel>
       
@@ -162,7 +162,7 @@
         <script id="icon_template" type="text/template">
         <ons-row style="height:120px" vertical-align="center">  
         <% categories.forEach(function(category){%>  
-        <ons-col style="background:plum;" width="33%">
+        <ons-col style="background:rgb(255, 98, 26); border:2px solid; color : white; border-radius: 15px;" width="33%" onclick="changeTab('<%= category.name %>')">
           <p style="text-align: center; margin: 10px;">
             <ons-icon size="60px" icon="<%= category.icon %>"></ons-icon>
           </p>
@@ -173,70 +173,81 @@
         <%});%>
         </ons-row>
         </script>
-
-      
     </ons-page>
   </template>
 
   <template id="tab2.html">
-    <ons-page id="Tab2">
-      <ons-list>
-        <ons-list-header>Shopping Cart</ons-list-header>
-        <ons-list-item>
-          <div class="left">
-            <img class="list-item__thumbnail" src="images/item1.jpg">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Apple Watch Series 3 GPS 42mm Grey</span>
-            <span class="list-item__subtitle" style="color: blue">฿12,650.00</span>
-          </div>
-          <div class="right">
-            <p style="text-align: center; margin: 10px;">
-              <ons-icon style="color: grey" size="30px" icon="md-delete"></ons-icon>
-            </p>
-          </div>
-        </ons-list-item>
-        <ons-list-item>
-          <div class="left">
-            <img class="list-item__thumbnail" src="images/item2.jpg">
-          </div>
-          <div class="center">
-            <span class="list-item__title">MICROLAB SPEAKER 2.1</span>
-            <span class="list-item__subtitle" style="color: blue">฿1,570.00</span>
-          </div>
-          <div class="right">
-            <p style="text-align: center; margin: 10px;">
-              <ons-icon style="color: grey" size="30px" icon="md-delete"></ons-icon>
-            </p>
-          </div>
-        </ons-list-item>
-        <ons-list-item>
-          <div class="left">
-            <img class="list-item__thumbnail" src="images/item3.jpg">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Nike Air Max 90 ดำเทาแดง เบอร์ 40</span>
-            <span class="list-item__subtitle" style="color: blue">฿2,990.00</span>
-          </div>
-          <div class="right">
-            <p style="text-align: center; margin: 10px;">
-              <ons-icon style="color: grey" size="30px" icon="md-delete"></ons-icon>
-            </p>
-          </div>
-        </ons-list-item>
-      </ons-list>
-      <p style="text-align: center; margin: 10px;">
-        <ons-button modifier="large">PROCEED TO PAY</ons-button>
+    <ons-page id="Tab2"><br>
+      <p style="text-align: center; margin-top: 10px;">
+        <ons-search-input placeholder="Search" onchange="search(this.value)"></ons-search-input>
       </p>
+      <!-- //onchange="ons.notification.alert('Searched for: ' + this.value)" -->
+      <section style=" padding: 5px;  margin: 10px;">
+          <p style=" color: rgb(255, 98, 26, 0.6)";><b style="color: tomato;" >สินค้าขายดีประจำสัปดาห์</b>  อัพเดทใหม่วันนี้</p>
+      </section>
+
+      <div id="allP"></div>
+      <script id="allP_template" type="text/template">
+        <div class="card-group" style="margin: auto; padding:5px;">
+          
+            <ons-row class="Alldetail">
+            <% allP.forEach(function(allP){
+          var item = allP.data();
+          %>  
+          <ons-col width="50%" onclick="getDetail('<%=item.title%>')">
+            <ons-card style="widht:90%; height:90%;" >
+             <img id="picz" src="<%=item.photo[0]%>" alt="Onsen UI" ><br>
+              <div class="title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" ><%=item.title%></div>
+              <div class="content" id="Pdetail">Price: <%= item.price %> ฿</div>
+              <br>
+            </ons-card>
+          </ons-col>
+        <%});%>
+        </ons-row>
+      </div>
+        </script>
+
     </ons-page>
   </template>
 
+
   <template id="tab3.html">
     <ons-page id="Tab3">
+      <div style="background-color:rgb(255, 96, 89, 0.2);">
+        <p style=" margin-left: 15px;">Shopping Cart :</p>
+      </div>
+
+      <div id="showDataCart"></div>
+
+      <script id="cart_template" type="text/template">
+        <ons-list>
+          
+        <% cartData.forEach(function(cartData){
+            var cartData = cartData.data(); 
+          %>
+          <ons-list-item>
+            <div class="left">
+              <img class="list-item__thumbnail" src="<%=cartData.photo[0]%>">
+            </div>
+            <div class="center">
+              <span class="list-item__title"> <%=cartData.title%></span>
+              <span class="list-item__subtitle" style="color: blue"> <%=cartData.price%></span>
+            </div>
+            <div class="right">
+              <p style="text-align: center; margin: 10px;">
+                <ons-icon style="color: grey" size="30px" icon="md-delete"></ons-icon>
+              </p>
+            </div>
+          </ons-list-item>   
+         
+        </ons-list>
+  
+        <%})%>
+      </script>
       <p style="text-align: center; margin: 10px;">
-        <ons-button modifier="large" onclick="addNewData();">
-          Add New Data
-        </ons-button>
+         <section style="padding: 8px">
+              <ons-button modifier="large">PROCEED TO PAY</ons-button>
+          </section> 
       </p>
     </ons-page>
   </template>

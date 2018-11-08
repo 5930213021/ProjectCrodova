@@ -236,13 +236,11 @@
               <span class="list-item__subtitle" style="color: blue"> <%=cartData.price%></span>
             </div>
                 <div class="right">
-                    <ons-button onclick="showAlert()">
+                    <ons-button>
+                    <!-- <ons-button onclick="showAlert()"> onclick="delitem(<%=num%>)"-->
                     <p style="text-align: center; margin: 10px;">
                         <ons-icon style="color: grey" size="30px" icon="md-delete"></ons-icon>
-                      <!-- <ons-icon style="color: grey" size="30px" icon="md-delete" onclick="removeCartProduct(<=% index %=>)"></ons-icon>
-                       <ons-icon icon="md-delete" onclick="remove(<%=num%>); removeprice('<%= cart.data().price %>')"></ons-icon> 
-                       <ons-icon style="color: skyblue" size="30px" icon="md-delete" onclick="delitem(<%=nums%>); delprice('<%= cartData.price %>');"></ons-icon> 
-                      <ons-icon style="color: skyblue" size="30px" icon="md-delete" onclick="delitem(<%=num%>)"></ons-icon>-->
+                     
                     </p>
                   </ons-button>
                   </div>

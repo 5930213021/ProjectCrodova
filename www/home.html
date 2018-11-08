@@ -117,6 +117,7 @@
 
 
 <body>
+  <ons-navigator swipeable id="myNavigator">
   <ons-page>
     <ons-toolbar style="background:rgb(255, 98, 26);">
       <div class="left">
@@ -140,6 +141,7 @@
       
     </ons-tabbar>
   </ons-page>
+</ons-navigator>
 
   <template id="tab1.html">
     <ons-page id="Tab1">
@@ -233,11 +235,15 @@
               <span class="list-item__title"> <%=cartData.title%></span>
               <span class="list-item__subtitle" style="color: blue"> <%=cartData.price%></span>
             </div>
-            <div class="right">
-              <p style="text-align: center; margin: 10px;">
-                <ons-icon style="color: grey" size="30px" icon="md-delete"></ons-icon>
-              </p>
-            </div>
+                <div class="right">
+                    <ons-button onclick="showAlert()">
+                    <p style="text-align: center; margin: 10px;">
+                        <ons-icon style="color: grey" size="30px" icon="md-delete"></ons-icon>
+                      <!-- <ons-icon style="color: grey" size="30px" icon="md-delete" onclick="removeCartProduct(<=% index %=>)"></ons-icon>
+                      <ons-icon style="color: skyblue" size="30px" icon="md-delete" onclick="delitem(<%=num%>)"></ons-icon>-->
+                    </p>
+                  </ons-button>
+                  </div>
           </ons-list-item>   
          
         </ons-list>
@@ -252,91 +258,303 @@
     </ons-page>
   </template>
 
+  <template id="detailP.html">
+    <ons-page>
+      <script>
+        var datadep = localStorage.getItem('getDep');
+        console.log(datadep)
+      </script>
+      <ons-toolbar style="background:rgb(255, 98, 26);">
+        <ons-back-button>
+          <div class="left" style="color:white;">Back</div>
+        </ons-back-button>
+        <div class="center" style="color:white; margin-right: 50px;">Detail</div>
+      </ons-toolbar>
+      <div id="showDep"></div>
+      <script id="Detailproduct_template" type="text/template">
+          <ons-card>
+              <% dataDep.forEach(function(dataDep){   
+                var data = dataDep.data(); %>
+              <ons-carousel swipeable auto-scroll overscrollable id="carousel" style="height: 300px;">
+                    <ons-carousel-item id="carousel1DeP" style="background: url('<%=data.photo[0]%>') no-repeat center; background-size: contain;"> 
+                    </ons-carousel-item>
+                    <ons-carousel-item id="carousel2DeP" style="background: url('<%=data.photo[1]%>') no-repeat center; background-size: contain;">
+                    </ons-carousel-item>
+             </ons-carousel>
+            
+              <div class="content">
+                <div class="side" style="color: gray;" > <--sideslip--> </div>
+                <div class="title" style="font-size:18px; color: black; " ><%= data.title %></div>
+                  <div>Price : <%= data.price%> ฿</div>
+                <ons-list id="deback">
+                  <ons-list-header style="background: rgb(255, 147, 126, 0.6); font-size:18px;" ><b>Detail product</b></ons-list-header>
+                  <ons-list-item>Category  
+                    <div id="dep" style="margin-left:70px;"><%=data.category%></div>
+                  </ons-list-item>
+                  <ons-list-item>Brand     
+                    <div id="dep" style="margin-left:90px;"><%=data.brand%></div>
+                  </ons-list-item>
+
+                  <ons-list-item>Color  
+                    <div id="dep" style="margin-left:95px;"><%=data.color%></div>
+                  </ons-list-item>
+                  
+                  <ons-list-item>Model  
+                    <div id="dep" style="margin-left:90px;"><%=data.model%></div>
+                  </ons-list-item>
+                </ons-list>
+              </div><br><br>
+              <ons-button  onclick="addcart('<%=data.title%>')" icon="fa-shopping-cart" > ADD CART</ons-button>
+              <%})%>
+            </ons-card>
+            
+       </script>
+
+    </ons-page>
+  </template>
 </body>
 <script>
+ 
+ function changeTab(name) {
+    localStorage.setItem('name', name);
+    document.getElementById('tabbar').setActiveTab(1);
+  }
+
   getHomeData();
+  all()
   document.addEventListener('prechange', function (event) {
     if (event.index == 0) {
       console.log('Home clicked');
-      // get data for home screen  
+      // get data for home screen
       getHomeData();
-    }else if (event.index == 1) {
+    } else if (event.index == 1) {
+      console.log('All product clicked');
+      var namepro = localStorage.getItem('name');
+      var item = localStorage.getItem('items');
+      // get data for cart screen
+      if (namepro == null && item == null) {
+        getAllProduct();
+      }
+      else if (namepro != null && item == null) {
+        getAllProduct(namepro);
+        localStorage.clear();
+      } else {
+        localStorage.clear();
+      }
+    } else if (event.index == 2) {
       console.log('Cart clicked');
       // get data for cart screen  
-      getCartData();
-    }
-    else if (event.index == 2) {
-      console.log('All product clicked');
-      // get data for all product screen  
-      getAllProduct();
+      getData2cart()
     }
   });
+
   function getHomeData() {
-
-    var code = localStorage.getItem('code');
-      if(code){
-        $('#search').html('code');
-      }
-
     var docRef = db.collection("UI").doc("home");
-    docRef.get().then(function(doc) {
-    if (doc.exists) {
+    docRef.get().then(function (doc) {
+      if (doc.exists) {
         //Display data
         console.log("Document data:", doc.data());
         var data = doc.data();
         $('#appname').html(data.appname);
         var style = "background: url('" + data.slides[0] + "') no-repeat center; background-size: contain;'";
         $('#carousel1').attr('style', style)
+        var style = "background: url('" + data.slides[1] + "') no-repeat center; background-size: contain;'";
+        $('#carousel2').attr('style', style)
+        var style = "background: url('" + data.slides[2] + "') no-repeat center; background-size: contain;'";
+        $('#carousel3').attr('style', style)
         var icon_template = $('#icon_template').html();
-        var html = ejs.render(icon_template, {categories : data.categories});
+        var html = ejs.render(icon_template, { categories: data.categories });
         $('#icons').html(html);
-    } else {
+      } else {
         console.log("No such document!");
-    }
-    }).catch(function(error) {
-    console.log("Error getting document:", error);
+      }
+    }).catch(function (error) {
+      console.log("Error getting document:", error);
     });
 
-    // $.getJSON('home.json', function (data) {
-    //   console.log(data);
-    //   $('#appname').html(data.appname);
-    //   var style = "background: url('images/" + data.slides[0] + "') no-repeat center; background-size: contain;'";
-    //   $('#carousel1').attr('style', style)
-    //   var icon_template = $('#icon_template').html();
-    //   var html = ejs.render(icon_template, {categories : data.categories});
-    //   $('#icons').html(html);
-    // });
   }
-  function getCartData() {
-    $.getJSON('cart.json', function (data) {
-      console.log(data);
-    });
+
+
+
+  function getAllProduct(namepro, item) {
+    if (namepro == null) {
+      var apr = db.collection("PRODUCTS")//เลือกเฉพาะ
+      apr.get().then(function (querySnapshot) {
+
+        var allP_template = $('#allP_template').html();
+        console.log(querySnapshot);
+        var html = ejs.render(allP_template, { allP: querySnapshot.docs });
+        $('#allP').html(html);
+      })
+    }
+
+    else {
+      var apr = db.collection("PRODUCTS").where("category", "==", namepro); //เลือกเฉพาะ
+      apr.get().then(function (querySnapshot) {
+        var allP_template = $('#allP_template').html();
+        console.log(querySnapshot);
+        var html = ejs.render(allP_template, { allP: querySnapshot.docs });
+        $('#allP').html(html);
+      })
+    }
   }
-  function getAllProduct(){
-    var allProductRef = db.collection("PRODUCTS").where("category","==","sport");
-    allProductRef.get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc){
-        console.log(doc.id, " => ", doc.data());
-      });
-    });
+
+  function search(search) {
+
+    const filterItems = (needle, heystack) => {
+      let query = needle.toLowerCase();
+      return heystack.filter(item => item.data().title.toLowerCase().indexOf(needle) >= 0);
+    }
+    console.log("searching", filterItems(search, data));
+    var item = filterItems(search, data);
+    console.log("toitem", item)
+    localStorage.setItem('items', item);
+
+    console.log('item', item);
+    tester(item);
+    document.getElementById('tabbar').setActiveTab(1);
+    //localStorage.setItem('title', item);
   }
-  function addNewData(){
-    var data = {
-      pid : '7',
-      title : 'iphoneX',
-      price : 50000,
-      category : 'smartphone'
-    };
-    //เพิ่มค่าโดยไม่ใช้ไอดี
-    db.collection("PRODUCTS").add(data)
-    .then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
+
+  const data = []
+  function all() {
+    console.log(search);
+    db.collection("PRODUCTS").get()
+      .then(function (querySnapshot) {
+
+        querySnapshot.docs.forEach(function (item) {
+          data.push(item)
+          console.log(data)
+        });
+      })
+    // const fruits = data[1];
+  }
+
+  function tester(title) {
+    console.log("check", title);
+    console.log('proset', title);
+
+    // var product_template = $('#product_template').html();
+    //  var html = ejs.render(product_template, { product: title });
+    // $('#product').html(html);
+
+    var allP_template = $('#allP_template').html();
+    var html = ejs.render(allP_template, { allP: title });
+    $('#allP').html(html);
+
+  }
+
+  function getDetail(getDep) {
+    localStorage.setItem("getDep", getDep)
+    showDetailP();
+    myNavigator.pushPage('detailP.html');
+  }
+
+  function showDetailP() {
+    var dataproduct = localStorage.getItem('getDep');
+    var apr = db.collection("PRODUCTS").where("title", "==", dataproduct);
+    apr.get().then(function (querySnapshot) {
+      var Detailproduct_template = $('#Detailproduct_template').html();
+      var html = ejs.render(Detailproduct_template, { dataDep: querySnapshot.docs });
+      $('#showDep').html(html);
     })
-    .catch (function (error){
-    console.error("Error adding document: ", error);
-    })
-    
+
   }
+
+  $.getJSON('cart.json', function (data) {
+    console.log(data);
+  });
+
+  var dataCart = [];
+
+  function addcart(add2cart) {
+    localStorage.clear('quentinTarantino');
+    localStorage.setItem('quentinTarantino', add2cart);
+    var retrievedData = localStorage.getItem("quentinTarantino");
+    console.log(retrievedData);
+    dataCart.push(retrievedData);
+
+    ons.notification.toast('Add product!', {
+      timeout: 700
+    });
+    $('#badge').attr('badge', dataCart.length);
+
+    //alert(dataCart);
+  }
+  function getData2cart() {
+    // console.log('functioncart');
+    console.log(dataCart);
+    // var num = 0;
+    document.getElementById('showDataCart').innerHTML = '';
+    dataCart.forEach(function (dataCart) {
+      var apr = db.collection("PRODUCTS").where("title", "==", dataCart);
+      apr.get().then(function (querySnapshot) {
+        console.log(querySnapshot.docs)
+        var cart_template = $('#cart_template').html();
+        var html = ejs.render(cart_template, { cartData: querySnapshot.docs});
+        // var html = ejs.render(cart_template, { cartData: querySnapshot.docs,num:num});
+        // num++
+        $('#showDataCart').append(html);
+
+      })
+
+    })
+  }
+//delete product cart
+// function remove(i) {
+//   console.log(i);
+//   console.log(dataCart);
+  
+//   var remove= dataCart.splice(i,1)
+//    ons.notification.toast("สินค้าถูกลบเรียบร้อยเเล้ว", {
+//     timeout: 2000
+//   });
+//   $("#Fillbadge").attr('badge', dataCart.length);
+//   showAdd()
+// }
+// var price = 0;
+//   function totalprice(priceadd) {
+//     var priceadd = parseInt(priceadd, 10)
+//     console.log(priceadd);
+//     price = price + priceadd;
+//     $('#showprice').html("<p><b>&nbsp; Total Price is : </b>" + price + " ฿</p>");
+//   }
+//   function removeprice(pricedel) {
+//     var pricedel = parseInt(pricedel, 10)
+//     console.log(pricedel);
+//     price = price - pricedel;
+//     if(price==0){document.getElementById('showprice').innerHTML=''
+//     }
+//     else{$('#showprice').html("<p><b>&nbsp; Total Price is : </b>" + price + " ฿</p>");}
+//   }
+// function removeCartProduct(index) {
+//     var cart = JSON.parse(localStorage.getItem('cart'))
+//     if (cart == null) {
+//         cart = []
+//     }
+//     if (cart.length < 1) {
+//         console.log(index)
+//     } else {
+//         cart.splice(index, 1)
+//         console.log(cart)
+//         localStorage.setItem('cart', JSON.stringify(cart));
+//         GetData.getCart()
+//     }
+// }
+  
+  //funtion delete product from cart
+  // function delitem(num) {
+  //   var remove = dataCart.splice(num, 1)
+  //   getprotocart()
+  //   if (dataCart.length == 0) {
+  //     $('.alertcart').attr('badge', "");
+  //   } else {
+  //     $('.alertcart').attr('badge', dataCart.length);
+  //   }
+  // }
+  // var showAlert = function () {
+  //   ons.notification.alert('You Have Successfully Deleted Your Product. !!!');
+  // };
   
   //code scan
   function scanQR(){

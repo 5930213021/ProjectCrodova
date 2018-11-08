@@ -35,15 +35,90 @@
       padding-left: 5px;
       padding-bottom: 5px;
       padding-right: 5px;
-      color: orange;
+      color: white;
     }
+
+  #picz{
+    width:120px; 
+    height:120px;
+  }
+  .card {
+    box-shadow: 0 5px 6px rgba(0,0,0,.12);
+    border-radius: 12px;
+    padding: 9px;
+    text-align: center;
+    word-wrap: break-word;
+}
+.card__title {
+    -webkit-font-smoothing: antialiased;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 
+    Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    margin: 4px 0 8px;
+    padding: 0;
+}
+.card__content {
+    font-size: 16px;
+    line-height: 2;
+    color: rgb(255, 98, 26);
+}
+ .button {
+    display: inline-block;
+    background: rgb(59, 167, 110);
+    font-family :'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    user-select: none;
+    padding: 4px 10px;
+    font-size: 17px;
+    line-height: 32px;
+    color: #fff;
+    border-radius: 5px;
+}
+.side{
+  font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+}
+#deback{
+  background: rgb(252, 124, 71, 0.2);
+}
+#dep{
+  color:hsl(0, 0%, 24%);
+ 
+}
+:checked+.tabbar__button {
+    color: rgb(255, 98, 26);
+ }
+
+#tabbar{
+  background-color: #fff;
+
+}
+
+.page, .page__background, .page__content {
+    background-color:rgb(255, 255, 231, 0.4);
+    position: absolute;
+}
+
+.toast{
+  background: tomato;
+}
+
+.back-button__icon {
+    margin-right: 6px;
+    display: inline-flex;
+    fill: white;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 100%;
+}
   </style>
 </head>
 
 
 <body>
   <ons-page>
-    <ons-toolbar>
+    <ons-toolbar style="background:rgb(255, 98, 26);">
       <div class="left">
         <ons-icon class="toolbaricon" size="30px" icon="fa-shopping-bag">
         </ons-icon>

@@ -148,7 +148,7 @@
     <ons-page id="Tab1">
       <p style="text-align: center; margin-top: 10px;">
         <!-- <ons-search-input id="search" placeholder="Search" onchange="scanQR()"></ons-search-input> -->
-        <ons-search-input id="search" placeholder="Search" onclick="scanQR()" onchange="search(this.value)"></ons-search-input>
+        <ons-search-input id="search" placeholder="Search" onchange="search(this.value)"></ons-search-input>
       </p>
       <ons-carousel swipeable auto-scroll overscrollable id="carousel" style="height: 300px;">
         <ons-carousel-item id="carousel1" style="background: url('') no-repeat center; background-size: contain;">
@@ -350,6 +350,8 @@
 
   function getHomeData() {
     var docRef = db.collection("UI").doc("home");
+    var code = localStorage.getItem("code");
+    if(code == null){
     docRef.get().then(function (doc) {
       if (doc.exists) {
         //Display data
@@ -371,9 +373,12 @@
     }).catch(function (error) {
       console.log("Error getting document:", error);
     });
-
-  }
-
+}else{
+  
+    myNavigator.pushPage('detailP.html');
+ showDetailP();
+}
+}
 
 
   function getAllProduct(namepro, item) {
@@ -451,12 +456,17 @@
   }
 
   function showDetailP() {
+    var a = localStorage.getItem("code");
+    if(a==null){
     var dataproduct = localStorage.getItem('getDep');
+  }else{
+    var dataproduct = localStorage.getItem('code');
+  }
     var apr = db.collection("PRODUCTS").where("title", "==", dataproduct);
     apr.get().then(function (querySnapshot) {
       var Detailproduct_template = $('#Detailproduct_template').html();
       var html = ejs.render(Detailproduct_template, { dataDep: querySnapshot.docs });
-      $('#showDep').html(html);
+      $('#showDep').html(html); 
     })
 
   }

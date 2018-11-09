@@ -22,9 +22,24 @@
     <style>
 
         .page, .page__background, .page__content {
-    background-color: rgb(255,137,90);
+    background-color: rgb(254, 141, 3,0.8);
     position: absolute;
 }
+.text-input--underbar {
+    background: 0 0;
+    line-height: 2;
+    font-family: -apple-system,'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+}
+/* .text-input__labeltext-input--underbar__label{
+    color : white; 
+} */
   </style>
 </head>
 
@@ -32,7 +47,7 @@
 <body>
     <ons-page>
         <div style="text-align: center; margin-top: 150px;">
-            <p>
+            <p style="color:white">
                 <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
             </p>
             <p>

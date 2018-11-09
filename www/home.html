@@ -5,31 +5,32 @@
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
   <script src="ejs.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-firestore.js"></script>
   <script src="cordova.js"></script>
-<script>
-  //Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyC-wVX17FRhoXHdifEm8bf7clYoBuQ5L7w",
-    authDomain: "shopee-8b7e0.firebaseapp.com",
-    databaseURL: "https://shopee-8b7e0.firebaseio.com",
-    projectId: "shopee-8b7e0",
-    storageBucket: "shopee-8b7e0.appspot.com",
-    messagingSenderId: "164928492296"
-  };
-  firebase.initializeApp(config);
-  // Initialize Cloud Firestore through Firebase
-  var db = firebase.firestore();
-  // Disable deprecated features
-  db.settings({
-  timestampsInSnapshots: true
-  });
+  <script>
+    //Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC-wVX17FRhoXHdifEm8bf7clYoBuQ5L7w",
+      authDomain: "shopee-8b7e0.firebaseapp.com",
+      databaseURL: "https://shopee-8b7e0.firebaseio.com",
+      projectId: "shopee-8b7e0",
+      storageBucket: "shopee-8b7e0.appspot.com",
+      messagingSenderId: "164928492296"
+    };
+    firebase.initializeApp(config);
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+    // Disable deprecated features
+    db.settings({
+      timestampsInSnapshots: true
+    });
   </script>
- 
+
   <style>
     .toolbaricon {
       padding-left: 5px;
@@ -118,30 +119,30 @@
 
 <body>
   <ons-navigator swipeable id="myNavigator">
-  <ons-page>
-    <ons-toolbar style="background:rgb(255, 98, 26);">
-      <div class="left">
-        <ons-icon class="toolbaricon" size="25px" icon="fa-shopping-bag" style="margin-left:10px;">
-        </ons-icon>
-      </div>
-      <div class="center" id="appname" style="text-align:center; color:white;"></div>#</div>
-      <div class="right">
-        <ons-icon class="toolbaricon" size="25px" icon="md-help" style="margin-right:10px;" onclick="window.location.href='signout.html'" >
-        </ons-icon>
-      </div>
-    </ons-toolbar>
+    <ons-page>
+      <ons-toolbar style="background:rgb(255, 98, 26);">
+        <div class="left">
+          <ons-icon class="toolbaricon" size="25px" icon="fa-shopping-bag" style="margin-left:10px;">
+          </ons-icon>
+        </div>
+        <div class="center" id="appname" style="text-align:center; color:white;"></div>#</div>
+        <div class="right">
+          <ons-icon class="toolbaricon" size="25px" icon="md-help" style="margin-right:10px;" onclick="window.location.href='signout.html'">
+          </ons-icon>
+        </div>
+      </ons-toolbar>
 
-    <ons-tabbar swipeable position="auto" id="tabbar">
-      <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="new" active>
-      </ons-tab>
-      <ons-tab page="tab2.html" label="Catalog" icon="fa-heart" active-icon="fa-heart">
-      </ons-tab>
-      <ons-tab page="tab3.html" label="Cart" icon="fa-shopping-cart" active-icon="fa-shopping-cart">
-      </ons-tab>
-      
-    </ons-tabbar>
-  </ons-page>
-</ons-navigator>
+      <ons-tabbar swipeable position="auto" id="tabbar">
+        <ons-tab page="tab1.html" label="Home" icon="ion-home, material:md-home" badge="new" active>
+        </ons-tab>
+        <ons-tab page="tab2.html" label="Catalog" icon="fa-heart" active-icon="fa-heart">
+        </ons-tab>
+        <ons-tab page="tab3.html" label="Cart" icon="fa-shopping-cart" active-icon="fa-shopping-cart">
+        </ons-tab>
+
+      </ons-tabbar>
+    </ons-page>
+  </ons-navigator>
 
   <template id="tab1.html">
     <ons-page id="Tab1">
@@ -158,10 +159,10 @@
         <ons-carousel-item id="carousel3" style="background: url('') no-repeat center; background-size: contain;">
         </ons-carousel-item>
       </ons-carousel>
-      
-        <div id="icons"></div>
 
-        <script id="icon_template" type="text/template">
+      <div id="icons"></div>
+
+      <script id="icon_template" type="text/template">
         <ons-row style="height:120px" vertical-align="center">  
         <% categories.forEach(function(category){%>  
         <ons-col style="background:rgb(255, 98, 26); border:2px solid; color : white; border-radius: 15px;" width="33%" onclick="changeTab('<%= category.name %>')">
@@ -185,7 +186,8 @@
       </p>
       <!-- //onchange="ons.notification.alert('Searched for: ' + this.value)" -->
       <section style=" padding: 5px;  margin: 10px;">
-          <p style=" color: rgb(255, 98, 26, 0.6)";><b style="color: tomato;" >สินค้าขายดีประจำสัปดาห์</b>  อัพเดทใหม่วันนี้</p>
+        <p style=" color: rgb(255, 98, 26, 0.6)" ;><b style="color: tomato;">สินค้าขายดีประจำสัปดาห์</b>
+          อัพเดทใหม่วันนี้</p>
       </section>
 
       <div id="allP"></div>
@@ -250,9 +252,9 @@
         <%})%>
       </script>
       <p style="text-align: center; margin: 10px;">
-         <section style="padding: 8px">
-              <ons-button modifier="large">PROCEED TO PAY</ons-button>
-          </section> 
+        <section style="padding: 8px">
+          <ons-button modifier="large">PROCEED TO PAY</ons-button>
+        </section>
       </p>
     </ons-page>
   </template>
@@ -313,8 +315,8 @@
   </template>
 </body>
 <script>
- 
- function changeTab(name) {
+
+  function changeTab(name) {
     localStorage.setItem('name', name);
     document.getElementById('tabbar').setActiveTab(1);
   }
@@ -490,7 +492,7 @@
       apr.get().then(function (querySnapshot) {
         console.log(querySnapshot.docs)
         var cart_template = $('#cart_template').html();
-        var html = ejs.render(cart_template, { cartData: querySnapshot.docs});
+        var html = ejs.render(cart_template, { cartData: querySnapshot.docs });
         // var html = ejs.render(cart_template, { cartData: querySnapshot.docs,num:num});
         // num++
         $('#showDataCart').append(html);
@@ -499,48 +501,48 @@
 
     })
   }
-//delete product cart
-// function remove(i) {
-//   console.log(i);
-//   console.log(dataCart);
-  
-//   var remove= dataCart.splice(i,1)
-//    ons.notification.toast("สินค้าถูกลบเรียบร้อยเเล้ว", {
-//     timeout: 2000
-//   });
-//   $("#Fillbadge").attr('badge', dataCart.length);
-//   showAdd()
-// }
-// var price = 0;
-//   function totalprice(priceadd) {
-//     var priceadd = parseInt(priceadd, 10)
-//     console.log(priceadd);
-//     price = price + priceadd;
-//     $('#showprice').html("<p><b>&nbsp; Total Price is : </b>" + price + " ฿</p>");
-//   }
-//   function removeprice(pricedel) {
-//     var pricedel = parseInt(pricedel, 10)
-//     console.log(pricedel);
-//     price = price - pricedel;
-//     if(price==0){document.getElementById('showprice').innerHTML=''
-//     }
-//     else{$('#showprice').html("<p><b>&nbsp; Total Price is : </b>" + price + " ฿</p>");}
-//   }
-// function removeCartProduct(index) {
-//     var cart = JSON.parse(localStorage.getItem('cart'))
-//     if (cart == null) {
-//         cart = []
-//     }
-//     if (cart.length < 1) {
-//         console.log(index)
-//     } else {
-//         cart.splice(index, 1)
-//         console.log(cart)
-//         localStorage.setItem('cart', JSON.stringify(cart));
-//         GetData.getCart()
-//     }
-// }
-  
+  //delete product cart
+  // function remove(i) {
+  //   console.log(i);
+  //   console.log(dataCart);
+
+  //   var remove= dataCart.splice(i,1)
+  //    ons.notification.toast("สินค้าถูกลบเรียบร้อยเเล้ว", {
+  //     timeout: 2000
+  //   });
+  //   $("#Fillbadge").attr('badge', dataCart.length);
+  //   showAdd()
+  // }
+  // var price = 0;
+  //   function totalprice(priceadd) {
+  //     var priceadd = parseInt(priceadd, 10)
+  //     console.log(priceadd);
+  //     price = price + priceadd;
+  //     $('#showprice').html("<p><b>&nbsp; Total Price is : </b>" + price + " ฿</p>");
+  //   }
+  //   function removeprice(pricedel) {
+  //     var pricedel = parseInt(pricedel, 10)
+  //     console.log(pricedel);
+  //     price = price - pricedel;
+  //     if(price==0){document.getElementById('showprice').innerHTML=''
+  //     }
+  //     else{$('#showprice').html("<p><b>&nbsp; Total Price is : </b>" + price + " ฿</p>");}
+  //   }
+  // function removeCartProduct(index) {
+  //     var cart = JSON.parse(localStorage.getItem('cart'))
+  //     if (cart == null) {
+  //         cart = []
+  //     }
+  //     if (cart.length < 1) {
+  //         console.log(index)
+  //     } else {
+  //         cart.splice(index, 1)
+  //         console.log(cart)
+  //         localStorage.setItem('cart', JSON.stringify(cart));
+  //         GetData.getCart()
+  //     }
+  // }
+
   //funtion delete product from cart
   // function delitem(num) {
   //   var remove = dataCart.splice(num, 1)
@@ -554,9 +556,9 @@
   // var showAlert = function () {
   //   ons.notification.alert('You Have Successfully Deleted Your Product. !!!');
   // };
-  
+
   //code scan
-  function scanQR(){
+  function scanQR() {
     window.location.href = 'scan.html';
 
   }

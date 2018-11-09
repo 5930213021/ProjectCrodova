@@ -122,7 +122,7 @@
     <ons-page>
       <ons-toolbar style="background:rgb(255, 98, 26);">
         <div class="left">
-          <ons-icon class="toolbaricon" size="25px" icon="fa-shopping-bag" style="margin-left:10px;">
+          <ons-icon class="toolbaricon" size="25px" icon="fa-camera" style="margin-left:10px;" onclick="scanQR()">
           </ons-icon>
         </div>
         <div class="center" id="appname" style="text-align:center; color:white;"></div>#</div>
@@ -149,7 +149,6 @@
       <p style="text-align: center; margin-top: 10px;">
         <!-- <ons-search-input id="search" placeholder="Search" onchange="scanQR()"></ons-search-input> -->
         <ons-search-input id="search" placeholder="Search" onchange="search(this.value)"></ons-search-input>
-        <!-- onchange="scanQR()" -->
       </p>
       <ons-carousel swipeable auto-scroll overscrollable id="carousel" style="height: 300px;">
         <ons-carousel-item id="carousel1" style="background: url('') no-repeat center; background-size: contain;">

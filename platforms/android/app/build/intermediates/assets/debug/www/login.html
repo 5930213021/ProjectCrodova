@@ -2,12 +2,21 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Francois+One|Heebo" rel="stylesheet">
+
+
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
     <script src="ejs.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
     <script src="cordova.js"></script>
     <script>
@@ -20,9 +29,9 @@
     </script>
 
     <style>
-
         .page, .page__background, .page__content {
-    background-color: rgb(254, 141, 3,0.8);
+    /* background-color: rgb(254, 141, 3,0.8); */
+    background-color: rgb(255, 195, 63);
     position: absolute;
 }
 .text-input--underbar {
@@ -45,9 +54,46 @@
 .topname{
     color:white;
     font-size: 45px;
-    font-family: 'Spicy Rice', cursive;
+    font-family: 'Francois One', sans-serif;
 
+}
+.appfunctionname{
+    color:rgb(255, 255, 255);
+    font-size: 18px;
+    font-family: 'Heebo', sans-serif;
+}
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 35px;
+  height: 35px;
+  margin: 5px 15px;
+  border-radius: 50%;
+}
+.fa:hover {
+    opacity: 0.7;
+}
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
 
+.button {
+    display: inline-block;
+    background: Gray;
+    font-family: -apple-system,'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    user-select: none;
+    padding: 4px 10px;
+    font-size: 17px;
+    line-height: 32px;
+    color: #fff;
+    border-radius: 3px;
 }
   </style>
 </head>
@@ -57,7 +103,7 @@
     <ons-page>
         <div style="text-align: center; margin-top: 150px;">
             <p class="topname">PSU Shopping</p><br>
-            <p style="color:white">
+            <p>
                 <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
             </p>
             <p>
@@ -65,18 +111,12 @@
             </p>
             <p style="margin-top: 30px;">
                 <ons-button onclick="login()">Sign in</ons-button>
-            </p>
-
-            <p style="margin-top: 30px;">
-                <ons-button onclick="google()">Sign in with google</ons-button>
-            </p>
-
-            <p style="margin-top: 30px;">
-                <ons-button onclick="facebook()">Sign in with facebook</ons-button>
-            </p>
-
+            </p><br><br>
+            <p class="appfunctionname">-------Sign in with-------</p>
+            <a class="fa fa-google" onclick="google()"></a>
+            <a class="fa fa-facebook" onclick="facebook()"></a>
             <p style="margin-top: 50px;">
-                <a href="register.html">Sign up for a new user</a>
+                <ons-button onclick="window.location.href='register.html'">Sign up for a new user</ons-button>
             </p>
         </div>
     </ons-page>
@@ -85,12 +125,6 @@
         var login = function () {
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
-
-            // if (username === 'bob' && password === 'secret') {
-            //     ons.notification.alert('Congratulations!');
-            // } else {
-            //     ons.notification.alert('Incorrect username or password.');
-            // }
 
             firebase.auth().signInWithEmailAndPassword(username, password).catch(function (error) {
                 // Handle Errors here.

@@ -140,6 +140,7 @@
         <ons-tab page="tab3.html" label="Cart" icon="fa-shopping-cart" active-icon="fa-shopping-cart">
         </ons-tab>
 
+
       </ons-tabbar>
     </ons-page>
   </ons-navigator>
@@ -272,7 +273,7 @@
       </ons-toolbar>
       <div id="showDep"></div>
       <script id="Detailproduct_template" type="text/template">
-          <ons-card>
+          <ons-card style="margin:-1px; padding-bottom:100px;">
               <% dataDep.forEach(function(dataDep){   
                 var data = dataDep.data(); %>
               <ons-carousel swipeable auto-scroll overscrollable id="carousel" style="height: 300px;">
@@ -326,7 +327,7 @@
     if (event.index == 0) {
       console.log('Home clicked');
       // get data for home screen
-      var code = localStorage.getItem("code");
+     
       getHomeData();
     } else if (event.index == 1) {
       console.log('All product clicked');
@@ -350,9 +351,10 @@
   });
 
   function getHomeData() {
+    var code = localStorage.getItem("code")
+    console.log('code: '+code);
+  
     var docRef = db.collection("UI").doc("home");
-    var code = localStorage.getItem("code");
-    if(code == null){
     docRef.get().then(function (doc) {
       if (doc.exists) {
         //Display data
@@ -374,11 +376,12 @@
     }).catch(function (error) {
       console.log("Error getting document:", error);
     });
-}else if(code != null){
   
-    myNavigator.pushPage('detailP.html');
- showDetailP();
- localStorage.clear("code");
+
+if(code!=null){
+  myNavigator.pushPage('detailP.html');
+  showDetailP();
+   
 }
 }
 
@@ -458,20 +461,21 @@
   }
 
   function showDetailP() {
-    var a = localStorage.getItem("code");
-    if(a==null){
-    var dataproduct = localStorage.getItem('getDep');
-  }else{
-    var dataproduct = localStorage.getItem(a);
-  }
+    var code = localStorage.getItem("code")
+    if(code==null){
+      var dataproduct = localStorage.getItem('getDep');
+    }else if(code!=null){
+      var dataproduct = localStorage.getItem('code');
+    }
     var apr = db.collection("PRODUCTS").where("title", "==", dataproduct);
     apr.get().then(function (querySnapshot) {
       var Detailproduct_template = $('#Detailproduct_template').html();
       var html = ejs.render(Detailproduct_template, { dataDep: querySnapshot.docs });
       $('#showDep').html(html); 
     })
+    localStorage.clear();
+}
 
-  }
 
   $.getJSON('cart.json', function (data) {
     console.log(data);
@@ -512,62 +516,7 @@
 
     })
   }
-  //delete product cart
-  // function remove(i) {
-  //   console.log(i);
-  //   console.log(dataCart);
-
-  //   var remove= dataCart.splice(i,1)
-  //    ons.notification.toast("สินค้าถูกลบเรียบร้อยเเล้ว", {
-  //     timeout: 2000
-  //   });
-  //   $("#Fillbadge").attr('badge', dataCart.length);
-  //   showAdd()
-  // }
-  // var price = 0;
-  //   function totalprice(priceadd) {
-  //     var priceadd = parseInt(priceadd, 10)
-  //     console.log(priceadd);
-  //     price = price + priceadd;
-  //     $('#showprice').html("<p><b>&nbsp; Total Price is : </b>" + price + " ฿</p>");
-  //   }
-  //   function removeprice(pricedel) {
-  //     var pricedel = parseInt(pricedel, 10)
-  //     console.log(pricedel);
-  //     price = price - pricedel;
-  //     if(price==0){document.getElementById('showprice').innerHTML=''
-  //     }
-  //     else{$('#showprice').html("<p><b>&nbsp; Total Price is : </b>" + price + " ฿</p>");}
-  //   }
-  // function removeCartProduct(index) {
-  //     var cart = JSON.parse(localStorage.getItem('cart'))
-  //     if (cart == null) {
-  //         cart = []
-  //     }
-  //     if (cart.length < 1) {
-  //         console.log(index)
-  //     } else {
-  //         cart.splice(index, 1)
-  //         console.log(cart)
-  //         localStorage.setItem('cart', JSON.stringify(cart));
-  //         GetData.getCart()
-  //     }
-  // }
-
-  //funtion delete product from cart
-  // function delitem(num) {
-  //   var remove = dataCart.splice(num, 1)
-  //   getprotocart()
-  //   if (dataCart.length == 0) {
-  //     $('.alertcart').attr('badge', "");
-  //   } else {
-  //     $('.alertcart').attr('badge', dataCart.length);
-  //   }
-  // }
-  // var showAlert = function () {
-  //   ons.notification.alert('You Have Successfully Deleted Your Product. !!!');
-  // };
-
+ 
   //code scan
   function scanQR() {
     window.location.href = 'scan.html';

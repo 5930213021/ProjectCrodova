@@ -12,6 +12,9 @@
     },
     "cordova-plugin-qrscanner": {
       "PACKAGE_NAME": "com.nisarat.hello"
+    },
+    "cordova-universal-links-plugin": {
+      "PACKAGE_NAME": "com.nisarat.hello"
     }
   },
   "dependent_plugins": {}

@@ -351,8 +351,8 @@
   });
 
   function getHomeData() {
-    var code = localStorage.getItem("code")
-    console.log('code: '+code);
+    var codes = localStorage.getItem("code")
+    console.log('code: '+codes);
   
     var docRef = db.collection("UI").doc("home");
     docRef.get().then(function (doc) {
@@ -378,7 +378,7 @@
     });
   
 
-if(code!=null){
+if(codes!=null){
   myNavigator.pushPage('detailP.html');
   showDetailP();
    
@@ -461,10 +461,10 @@ if(code!=null){
   }
 
   function showDetailP() {
-    var code = localStorage.getItem("code")
-    if(code==null){
+    var codes = localStorage.getItem("code")
+    if(codes==null){
       var dataproduct = localStorage.getItem('getDep');
-    }else if(code!=null){
+    }else if(codes!=null){
       var dataproduct = localStorage.getItem('code');
     }
     var apr = db.collection("PRODUCTS").where("title", "==", dataproduct);

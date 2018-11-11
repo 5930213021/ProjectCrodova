@@ -15,7 +15,20 @@
     },
     "cordova-universal-links-plugin": {
       "PACKAGE_NAME": "com.nisarat.hello"
+    },
+    "cordova-plugin-buildinfo": {
+      "PACKAGE_NAME": "com.nisarat.hello"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.nisarat.hello"
+    },
+    "cordova-plugin-browsertab": {
+      "PACKAGE_NAME": "com.nisarat.hello"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.nisarat.hello"
+    }
+  }
 }

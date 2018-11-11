@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "164928492296",
+    "firebase_url": "https://shopee-8b7e0.firebaseio.com",
+    "project_id": "shopee-8b7e0",
+    "storage_bucket": "shopee-8b7e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164928492296:android:a98aa12fa9140773",
+        "android_client_info": {
+          "package_name": "com.nisarat.hello"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164928492296-c1mskr8mhukc9gbtqvpe1smulfsomg45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcaM6Z0vVn-WoHen4REVVaEKnCNR0Caqc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164928492296:android:0814f40ca6387028",
+        "android_client_info": {
+          "package_name": "nisa.shopee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164928492296-c1mskr8mhukc9gbtqvpe1smulfsomg45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcaM6Z0vVn-WoHen4REVVaEKnCNR0Caqc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

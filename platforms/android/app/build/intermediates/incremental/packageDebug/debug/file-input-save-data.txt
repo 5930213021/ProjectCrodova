@@ -1,6 +1,6 @@
 #Internal package file, do not edit.
-#Sun Nov 11 19:38:33 ICT 2018
-56.path=www/images/item27.jpg
+#Mon Nov 12 18:57:28 ICT 2018
+56.path=www/images/item8.jpg
 5.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 42.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 22.path=www/plugins/cordova-plugin-inappbrowser/www/inappbrowser.js
@@ -57,7 +57,7 @@
 8.baseType=DIRECTORY
 47.path=www/images/item25.jpg
 53.set=ASSET
-57.path=www/home.json
+57.path=www/images/item27.jpg
 6.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 43.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 4.set=ASSET
@@ -73,6 +73,7 @@
 39.baseType=DIRECTORY
 20.baseType=DIRECTORY
 27.path=www/images/item18.jpg
+58.baseType=DIRECTORY
 57.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 37.path=www/cordova-js-src/android/nativeapiprovider.js
 20.set=ASSET
@@ -83,7 +84,7 @@
 13.path=www/images/item16.jpg
 17.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 27.set=ASSET
-count=58
+count=59
 27.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 16.set=ASSET
 37.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
@@ -105,7 +106,7 @@ count=58
 44.path=www/images/item1.jpg
 23.set=ASSET
 12.baseType=DIRECTORY
-54.path=www/images/item15.jpg
+54.path=www/images/bordercamera.png
 3.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 40.baseType=DIRECTORY
 22.baseType=DIRECTORY
@@ -116,6 +117,7 @@ count=58
 50.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 48.path=www/cordova.js
 30.path=www/plugins/cordova-plugin-browsertab/www/browsertab.js
+58.path=www/home.json
 7.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 44.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 19.set=ASSET
@@ -131,6 +133,7 @@ count=58
 28.path=www/login.html
 30.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 10.path=www/ejs.js
+58.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 13.baseType=DIRECTORY
 50.baseType=DIRECTORY
 41.baseType=DIRECTORY
@@ -167,7 +170,7 @@ count=58
 8.path=www/images/item21.jpg
 45.path=www/images/item29.jpg
 33.set=ASSET
-55.path=www/images/item8.jpg
+55.path=www/images/item15.jpg
 4.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 41.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 15.baseType=DIRECTORY
@@ -199,6 +202,7 @@ count=58
 2.set=ASSET
 39.path=www/images/item26.jpg
 40.set=ASSET
+58.set=ASSET
 25.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 16.baseType=DIRECTORY
 25.baseType=DIRECTORY

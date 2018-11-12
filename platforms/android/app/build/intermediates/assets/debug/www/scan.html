@@ -9,6 +9,55 @@
     <script src="cordova.js"></script>
 </head>
 
+<style>
+.mask {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.frame-top-left {
+    border-top-width: 3;
+    border-left-width: 3;
+    border-color: #51B8ED;
+}
+
+.frame-top-right {
+    border-top-width: 3;
+    border-right-width: 3;
+    border-color: #51B8ED;
+}
+
+.frame-bottom-left {
+    border-bottom-width: 3;
+    border-left-width: 3;
+    border-color: #51B8ED;
+}
+
+.frame-bottom-right {
+    border-bottom-width: 3;
+    border-right-width: 3;
+    border-color: #51B8ED;
+}
+
+.swing {
+    animation-name: swingAnimation;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.42,0,1,1);
+}
+
+@keyframes swingAnimation {
+    0% { 
+        transform: translate(0, 0); 
+    }
+    50% { 
+        transform: translate(0, 300); 
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+</style>
+
 <body>
 
     <script>
@@ -23,7 +72,7 @@
                 } else {
                     // The scan completed, display the contents of the QR code:
                     localStorage.setItem("code", text);
-                    QRScanner.hide();
+                    QRScanner.destroy();
                     window.location.href = 'home.html';
                 }
             }

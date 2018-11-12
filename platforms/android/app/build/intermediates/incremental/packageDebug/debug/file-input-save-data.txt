@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Nov 12 18:57:28 ICT 2018
+#Mon Nov 12 19:01:24 ICT 2018
 56.path=www/images/item8.jpg
 5.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 42.base=D\:\\977-341\\hellocordova\\platforms\\android\\app\\build\\intermediates\\assets\\debug

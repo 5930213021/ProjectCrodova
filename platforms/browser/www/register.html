@@ -52,7 +52,7 @@
 
 .button {
     display: inline-block;
-    background: Gray;
+    background: rgb(255, 127, 79);
     font-family: -apple-system,'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;
     -webkit-font-smoothing: antialiased;
     font-weight: 400;
@@ -63,13 +63,29 @@
     color: #fff;
     border-radius: 3px;
 }
+
+.back-button__icon {
+    margin-right: 6px;
+    display: inline-flex;
+    fill: white;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 20px;
+}
+.leftbutton{
+    margin-top: 20px;
+}
   </style>
 </head>
 
 
 <body>
     <ons-page>
-        <div style="text-align: center; margin-top: 150px;">
+        <ons-back-button>
+            <div class="leftbutton" style="color:white;" onclick="window.location.href='login.html'">Back</div>
+        </ons-back-button>
+        <div style="text-align: center; margin-top: 100px;">
             <p class="topname">Register new user</p>
             <p>
                 <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>

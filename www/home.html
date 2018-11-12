@@ -88,7 +88,7 @@
  
 }
 :checked+.tabbar__button {
-    color: rgb(255, 98, 26);
+    color: rgb(255, 177, 68);
  }
 
 #tabbar{
@@ -120,7 +120,7 @@
 <body>
   <ons-navigator swipeable id="myNavigator">
     <ons-page>
-      <ons-toolbar style="background:rgb(255, 98, 26);">
+      <ons-toolbar style="background:rgb(255, 177, 68);">
         <div class="left">
           <ons-icon class="toolbaricon" size="25px" icon="fa-camera" style="margin-left:10px;" onclick="scanQR()">
           </ons-icon>
@@ -165,7 +165,7 @@
       <script id="icon_template" type="text/template">
         <ons-row style="height:120px" vertical-align="center">  
         <% categories.forEach(function(category){%>  
-        <ons-col style="background:rgb(255, 98, 26); border:2px solid; color : white; border-radius: 15px;" width="33%" onclick="changeTab('<%= category.name %>')">
+        <ons-col style="background:rgb(255, 127, 79); border:2px solid; color : white; border-radius: 15px;" width="33%" onclick="changeTab('<%= category.name %>')">
           <p style="text-align: center; margin: 10px;">
             <ons-icon size="60px" icon="<%= category.icon %>"></ons-icon>
           </p>
@@ -265,7 +265,7 @@
         var datadep = localStorage.getItem('getDep');
         console.log(datadep)
       </script>
-      <ons-toolbar style="background:rgb(255, 98, 26);">
+      <ons-toolbar style="background:rgb(255, 177, 68);">
         <ons-back-button>
           <div class="left" style="color:white;">Back</div>
         </ons-back-button>

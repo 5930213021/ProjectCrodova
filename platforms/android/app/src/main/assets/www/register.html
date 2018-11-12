@@ -4,6 +4,10 @@
 <head>
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
+
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
@@ -20,20 +24,69 @@
     </script>
 
     <style>
-        .toolbaricon {
-      padding-left: 5px;
-      padding-bottom: 5px;
-      padding-right: 5px;
-      color: orange;
-    }
+        .page, .page__background, .page__content {
+     background-color: rgb(255, 177, 68);
+    position: absolute;
+}
+
+.text-input--underbar {
+    background: 0 0;
+    line-height: 2;
+    font-family: -apple-system,'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+}
+
+.topname{
+    color:white;
+    font-size: 35px;
+    font-family: 'Spicy Rice', cursive;
+
+}
+
+
+.button {
+    display: inline-block;
+    background: rgb(255, 127, 79);
+    font-family: -apple-system,'Helvetica Neue',Helvetica,Arial,'Lucida Grande',sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    user-select: none;
+    padding: 4px 10px;
+    font-size: 17px;
+    line-height: 32px;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.back-button__icon {
+    margin-right: 6px;
+    display: inline-flex;
+    fill: white;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 100%;
+
+}
+/* .leftbutton{
+    margin-top: 20px;
+} */
   </style>
 </head>
 
 
 <body>
     <ons-page>
-        <div style="text-align: center; margin-top: 150px;">
-            <h3>Register new user</h3>
+        <ons-back-button>
+            <div class="leftbutton" style="color:white;" onclick="window.location.href='login.html'">Back</div>
+        </ons-back-button>
+        <div style="text-align: center; margin-top: 80px;">
+            <p class="topname">Register new user</p>
             <p>
                 <ons-input id="username" modifier="underbar" placeholder="Username" float></ons-input>
             </p>
